@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  media_ingestion:
+    build: ./services/media_ingestion
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./services/media_ingestion/chunks:/app/chunks
+  ai_processing:
+    build: ./services/ai_processing
+    ports:
+      - "8002:8000"
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+  mcp_server:
+    build: ./services/mcp_server
+    ports:
+      - "8003:8000"
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: smartmedia
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
