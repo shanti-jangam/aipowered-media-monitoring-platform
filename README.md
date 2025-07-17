@@ -10,7 +10,7 @@ A microservices-based platform that ingests live media streams (YouTube, radio, 
 - **Regulators**: Flag policy violations
 - **Enterprises**: Automate compliance and crisis response
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
